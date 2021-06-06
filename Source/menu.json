@@ -1,0 +1,37 @@
+[
+	{
+		"name": "Browned",
+		"price": 2.10,
+		"description": "Подрумененная"
+	},	
+	{
+		"name": "Blackberry",
+		"price": 2.50,
+		"description": "Ежевичная"
+	},	
+	{
+		"name": "Crispy",
+		"price": 2.10,
+		"description": "Хрустящая"
+	},	
+	{
+		"name": "Banana",
+		"price": 2.50,
+		"description": "Банановая"
+	},	
+	{
+		"name": "Soggy",
+		"price": 2.00,
+		"description": "Мягкая"
+	},	
+	{
+		"name": "Vodka",
+		"price": 10.0,
+		"description": "Вкусная охлажденная водка"
+	},	
+	{
+		"name": "Herring ",
+		"price": 3.10,
+		"description": "Свежайшая соленая сельдь"
+	}
+]

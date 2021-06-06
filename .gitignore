@@ -1,0 +1,11 @@
+.vs/
+bin/
+obj/
+/Orders
+/packages
+/Properties
+*.config
+*.csproj
+*.csproj.user
+*.sln
+*.resx
