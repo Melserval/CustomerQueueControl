@@ -32,22 +32,21 @@ namespace Breackfast_for_Lamberjack
 			return items.Count() > 0;
 		}
 
-		/// <summary>
-		/// Загрузка Клиентов из файла.
-		/// </summary>
-		/// <param name="fileLambersPath">путь к файлу</param>
-		/// <param name="items"></param>
-		/// <returns></returns>
+		// Загрузка Клиентов из файла.
 		public static bool FileCustomer(string fileLambersPath, out List<Lamberjack> items)
 		{
-			items = new List<Lamberjack>();
-			string temp;
-			using (StreamReader lamber_sr = new StreamReader(fileLambersPath))
+			try
 			{
-				while ((temp = lamber_sr.ReadLine()) != null)
-				{
-					items.Add(new Lamberjack(temp.Trim()));
-				}
+				string jsonStr = File.ReadAllText(fileLambersPath);
+				items = JsonSerializer.Deserialize<List<Lamberjack>>(
+					jsonStr,
+					new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+				);
+			}
+			catch (Exception)
+			{
+
+				throw;
 			}
 			return items.Count() > 0;
 		}

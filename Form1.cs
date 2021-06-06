@@ -36,6 +36,9 @@ namespace Breackfast_for_Lamberjack
 			this.flapjackOrder = new Dictionary<Flapjack, int>();
 			this.breakfastLine = new Queue<Lamberjack>();
 			this.mainMealMenu = new MealMenu(this.listBox_menu);
+
+			this.openFileDialog_menu.Filter = "JSON |*.json| All Files |*.*";
+			this.openFileDialog_customer.Filter = "JSON |*.json| All Files |*.*";
 		}
 
 		#region --- методы операций управления очередью клиентов. ---
@@ -89,7 +92,7 @@ namespace Breackfast_for_Lamberjack
 
 			int flapCount = int.Parse((sender as Button).Tag as string);
 
-			Flapjack food = this.mainMealMenu.List.Find(item => item.Name == this.listBox_menu.SelectedItem.ToString());
+			Flapjack food = this.mainMealMenu.List.Find(item => item.DisplayName == this.listBox_menu.SelectedItem.ToString());
 			if (this.flapjackOrder.ContainsKey(food))
 			{
 				this.flapjackOrder[food] += flapCount;
@@ -207,7 +210,7 @@ namespace Breackfast_for_Lamberjack
 			{
 				if (OuterDataLoader.FileCustomer(openFileDialog_customer.FileName, out List<Lamberjack> items))
 				{
-					//TODO: Реализовать наполенение очереди клиентов.
+					items.ForEach(this.lamberEnqueue);
 				}
 			}
 		}

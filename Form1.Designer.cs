@@ -302,14 +302,6 @@ namespace Breackfast_for_Lamberjack
 			this.button_loadCustomer.UseVisualStyleBackColor = true;
 			this.button_loadCustomer.Click += new System.EventHandler(this.button_loadCustomer_Click);
 			// 
-			// openFileDialog_menu
-			// 
-			this.openFileDialog_menu.FileName = "openFileDialog1";
-			// 
-			// openFileDialog_customer
-			// 
-			this.openFileDialog_customer.FileName = "openFileDialog1";
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

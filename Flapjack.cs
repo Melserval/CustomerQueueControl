@@ -11,26 +11,25 @@ namespace Breackfast_for_Lamberjack
 	{
 		private static int _flapjackCounter;
 
-		private  string _name;
-		private  string _description;
-		private  float _price;
+		private readonly string _name;
+		private readonly string _description;
+		private readonly double _price;
 		private readonly int _id;
 
 		public string DisplayName => this._name;
-		public string Name { get => _name; set => _name = value; }
-		public string Description { get => this._description; set => _description = value; }
-		public float Price { get => this._price; set => _price = value; }
+		public string Description => this._description;
+		public double Price => this._price;
+		public string Name => this._name;
 		public string Id => $"flp{this._id}";
 
-		public Flapjack() { this._id = (_flapjackCounter += 1); }
-
-		public Flapjack(string name, float price, string description = null)
+		public Flapjack(string name, double price, string description = null)
 		{
 			this._name = name;
 			this._price = price;
 			this._description = description ?? name;
 			this._id = (_flapjackCounter += 1);
 		}
+
 
 		public override string ToString()
 		{
