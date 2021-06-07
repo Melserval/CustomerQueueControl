@@ -1,5 +1,5 @@
 ﻿
-namespace Breackfast_for_Lamberjack
+namespace CustomerQueueControl
 {
 	partial class Form1
 	{

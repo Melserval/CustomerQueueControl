@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-// Комплект еды, трапеза клиента.
-namespace Breackfast_for_Lamberjack
+﻿// Комплект еды, трапеза клиента.
+namespace CustomerQueueControl
 {
-	class Flapjack
+	class Dish
 	{
 		private static int _flapjackCounter;
 
@@ -22,7 +16,7 @@ namespace Breackfast_for_Lamberjack
 		public string Name => this._name;
 		public string Id => $"flp{this._id}";
 
-		public Flapjack(string name, double price, string description = null)
+		public Dish(string name, double price, string description = null)
 		{
 			this._name = name;
 			this._price = price;

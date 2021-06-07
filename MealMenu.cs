@@ -1,36 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Breackfast_for_Lamberjack
+namespace CustomerQueueControl
 {
 	// Перечень блюд в меню.
 	// настройка содержимого и управление отображением.
 	[Serializable]
 	class MealMenu
 	{
-		private List<Flapjack> itemsMenu = new List<Flapjack>();
+		private List<Dish> itemsMenu = new List<Dish>();
 		private ListBox displaylistMenu;
 		public MealMenu(System.Windows.Forms.ListBox list)
 		{
 			this.displaylistMenu = list;
 		}
 
-		public List<Flapjack> List => itemsMenu;
+		public List<Dish> List => itemsMenu;
 
-		public void Add(params Flapjack[] meals)
+		public void Add(params Dish[] meals)
 		{
-			foreach (Flapjack meal in meals)
+			foreach (Dish meal in meals)
 			{
 				this.itemsMenu.Add(meal);
 				this.displaylistMenu.Items.Add(meal.DisplayName);
 			}
 		}
 
-		public void Remove(Flapjack meal)
+		public void Remove(Dish meal)
 		{
 			int i = this.itemsMenu.IndexOf(meal);
 			if (i > -1)

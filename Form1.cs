@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Linq;
+using System.Windows.Forms;
 
-namespace Breackfast_for_Lamberjack
+namespace CustomerQueueControl
 {
 	public partial class Form1 : Form
 	{
@@ -22,10 +16,10 @@ namespace Breackfast_for_Lamberjack
 		private MealMenu mainMealMenu;
 
 		// список-очередь клиентов.
-		private Queue<Lamberjack> breakfastLine;
+		private Queue<Customer> breakfastLine;
 
 		// количество экземпляров пайка.
-		private Dictionary<Flapjack, int> flapjackOrder;
+		private Dictionary<Dish, int> flapjackOrder;
 
 		// делегаты для операций с очередью клиентов в breakfastLine.
 
@@ -33,8 +27,8 @@ namespace Breackfast_for_Lamberjack
 		public Form1()
 		{
 			InitializeComponent();
-			this.flapjackOrder = new Dictionary<Flapjack, int>();
-			this.breakfastLine = new Queue<Lamberjack>();
+			this.flapjackOrder = new Dictionary<Dish, int>();
+			this.breakfastLine = new Queue<Customer>();
 			this.mainMealMenu = new MealMenu(this.listBox_menu);
 
 			this.openFileDialog_menu.Filter = "JSON |*.json| All Files |*.*";
@@ -42,13 +36,13 @@ namespace Breackfast_for_Lamberjack
 		}
 
 		#region --- методы операций управления очередью клиентов. ---
-		
+
 		// Добавление нового клиента в очередь
-		private void lamberEnqueue(Lamberjack lamb)
+		private void lamberEnqueue(Customer lamb)
 		{
 			this.breakfastLine.Enqueue(lamb);
 			this.listBox_breakfastLine.Items.Add(lamb.Name);
-			if (this.breakfastLine.Count  == 1)
+			if (this.breakfastLine.Count == 1)
 			{
 				this.label_currentCustomer.Text = lamb.Name;
 			}
@@ -61,7 +55,7 @@ namespace Breackfast_for_Lamberjack
 
 		}
 
-		
+
 		#endregion
 
 		// загрузка сериализованных данных.
@@ -92,11 +86,12 @@ namespace Breackfast_for_Lamberjack
 
 			int flapCount = int.Parse((sender as Button).Tag as string);
 
-			Flapjack food = this.mainMealMenu.List.Find(item => item.DisplayName == this.listBox_menu.SelectedItem.ToString());
+			Dish food = this.mainMealMenu.List.Find(item => item.DisplayName == this.listBox_menu.SelectedItem.ToString());
 			if (this.flapjackOrder.ContainsKey(food))
 			{
 				this.flapjackOrder[food] += flapCount;
-			} else
+			}
+			else
 			{
 				this.flapjackOrder.Add(food, flapCount);
 			}
@@ -112,7 +107,7 @@ namespace Breackfast_for_Lamberjack
 			}
 			else
 			{
-				this.lamberEnqueue(new Lamberjack(textBox_lamberjackName.Text));
+				this.lamberEnqueue(new Customer(textBox_lamberjackName.Text));
 				textBox_lamberjackName.Text = null;
 			}
 		}
@@ -131,7 +126,7 @@ namespace Breackfast_for_Lamberjack
 			}
 			else
 			{
-				this.lamberEnqueue(new Lamberjack(textBox_lamberjackName.Text));
+				this.lamberEnqueue(new Customer(textBox_lamberjackName.Text));
 				textBox_lamberjackName.Text = null;
 			}
 		}
@@ -148,7 +143,7 @@ namespace Breackfast_for_Lamberjack
 			}
 
 			OrderLoger.Save(
-				this.flapjackOrder.ToDictionary(element => element.Key.DisplayName, element => element.Value), 
+				this.flapjackOrder.ToDictionary(element => element.Key.DisplayName, element => element.Value),
 				this.breakfastLine.Peek().Name
 			);
 			this.flapjackOrder.Clear();
@@ -163,7 +158,7 @@ namespace Breackfast_for_Lamberjack
 				this.groupBox_buttonSetCount.Enabled = false;
 				this.button_nextLamberjack.Enabled = false;
 				this.label_currentCustomer.Text = null;
-			} 
+			}
 			else // если очередь не опустела отображает следующего получателя.
 			{
 				this.label_currentCustomer.Text = this.breakfastLine.Peek().Name;
@@ -196,7 +191,7 @@ namespace Breackfast_for_Lamberjack
 		{
 			if (openFileDialog_menu.ShowDialog() == DialogResult.OK)
 			{
-				if (OuterDataLoader.FileMenu(openFileDialog_menu.FileName, out List<Flapjack> items))
+				if (OuterDataLoader.FileMenu(openFileDialog_menu.FileName, out List<Dish> items))
 				{
 					this.mainMealMenu.Add(items.ToArray());
 				}
@@ -208,7 +203,7 @@ namespace Breackfast_for_Lamberjack
 		{
 			if (openFileDialog_customer.ShowDialog() == DialogResult.OK)
 			{
-				if (OuterDataLoader.FileCustomer(openFileDialog_customer.FileName, out List<Lamberjack> items))
+				if (OuterDataLoader.FileCustomer(openFileDialog_customer.FileName, out List<Customer> items))
 				{
 					items.ForEach(this.lamberEnqueue);
 				}

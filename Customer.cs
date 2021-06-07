@@ -1,27 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Breackfast_for_Lamberjack
+namespace CustomerQueueControl
 {
-	class Lamberjack
+	class Customer
 	{
 		private readonly string _name;
-		private List<Flapjack> _meal;
+		private List<Dish> _meal;
 
-		public Lamberjack(string name)
+		public Customer(string name)
 		{
 			this._name = name;
-			this._meal = new List<Flapjack>();
+			this._meal = new List<Dish>();
 		}
 
 		public string Name => this._name;
 
 		public int FlapjackCount => this._meal.Count;
 
-		public void TakeFlapjacks(Flapjack food, int howmany)
+		public void TakeFlapjacks(Dish food, int howmany)
 		{
 			for (; howmany > 0; howmany--)
 			{
@@ -38,10 +36,10 @@ namespace Breackfast_for_Lamberjack
 
 				while (this._meal.Count > 0)
 				{
-					textBox.Text +=  $"съел {this._meal.Last().DisplayName}." + Environment.NewLine;
+					textBox.Text += $"съел {this._meal.Last().DisplayName}." + Environment.NewLine;
 					this._meal.RemoveAt(this._meal.Count - 1);
 				}
-			} 
+			}
 		}
 	}
 }
