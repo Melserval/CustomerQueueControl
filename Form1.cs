@@ -33,6 +33,7 @@ namespace CustomerQueueControl
 
 			this.openFileDialog_menu.Filter = "JSON |*.json| All Files |*.*";
 			this.openFileDialog_customer.Filter = "JSON |*.json| All Files |*.*";
+			this.openFileDialog_customer.InitialDirectory = Environment.CurrentDirectory;
 		}
 
 		#region --- методы операций управления очередью клиентов. ---
@@ -107,26 +108,10 @@ namespace CustomerQueueControl
 			}
 			else
 			{
-				this.lamberEnqueue(new Customer(textBox_lamberjackName.Text));
-				textBox_lamberjackName.Text = null;
-			}
-		}
-
-		// Добавление нового клиента из формы (нажатие Enter).
-		private void textBox_lamberjackName_KeyUp(object sender, KeyEventArgs e)
-		{
-			if (e.KeyCode != Keys.Enter)
-			{
-				return;
-			}
-
-			if (String.IsNullOrEmpty(textBox_lamberjackName.Text))
-			{
-				MessageBox.Show("Необходимо ввести имя");
-			}
-			else
-			{
-				this.lamberEnqueue(new Customer(textBox_lamberjackName.Text));
+				this.lamberEnqueue(new Customer(
+					textBox_lamberjackName.Text,
+					String.IsNullOrEmpty(textBox_customerDesc.Text) ? null : textBox_customerDesc.Text
+				));
 				textBox_lamberjackName.Text = null;
 			}
 		}

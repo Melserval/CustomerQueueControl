@@ -7,15 +7,18 @@ namespace CustomerQueueControl
 	class Customer
 	{
 		private readonly string _name;
+		private string _desc;
 		private List<Dish> _meal;
 
-		public Customer(string name)
+		public Customer(string name, string desc=null)
 		{
 			this._name = name;
 			this._meal = new List<Dish>();
+			this._desc = desc ?? name;
 		}
 
 		public string Name => this._name;
+		public string Desc => this._desc;
 
 		public int FlapjackCount => this._meal.Count;
 

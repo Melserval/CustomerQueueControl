@@ -29,9 +29,9 @@ namespace CustomerQueueControl
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label_lamberjackName = new System.Windows.Forms.Label();
+			this.label_customerName = new System.Windows.Forms.Label();
 			this.textBox_lamberjackName = new System.Windows.Forms.TextBox();
-			this.button_addLamberjack = new System.Windows.Forms.Button();
+			this.button_addCustomer = new System.Windows.Forms.Button();
 			this.listBox_breakfastLine = new System.Windows.Forms.ListBox();
 			this.label_breakfastLine = new System.Windows.Forms.Label();
 			this.button_nextLamberjack = new System.Windows.Forms.Button();
@@ -55,36 +55,39 @@ namespace CustomerQueueControl
 			this.button_loadCustomer = new System.Windows.Forms.Button();
 			this.openFileDialog_menu = new System.Windows.Forms.OpenFileDialog();
 			this.openFileDialog_customer = new System.Windows.Forms.OpenFileDialog();
+			this.groupBox_addCustomer = new System.Windows.Forms.GroupBox();
+			this.textBox_customerDesc = new System.Windows.Forms.TextBox();
+			this.label1_customerDesc = new System.Windows.Forms.Label();
 			this.groupBox_buttonSetCount.SuspendLayout();
 			this.groupBox2.SuspendLayout();
+			this.groupBox_addCustomer.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// label_lamberjackName
+			// label_customerName
 			// 
-			this.label_lamberjackName.AutoSize = true;
-			this.label_lamberjackName.Location = new System.Drawing.Point(12, 9);
-			this.label_lamberjackName.Name = "label_lamberjackName";
-			this.label_lamberjackName.Size = new System.Drawing.Size(91, 13);
-			this.label_lamberjackName.TabIndex = 4;
-			this.label_lamberjackName.Text = "Lamberjack name";
+			this.label_customerName.AutoSize = true;
+			this.label_customerName.Location = new System.Drawing.Point(6, 23);
+			this.label_customerName.Name = "label_customerName";
+			this.label_customerName.Size = new System.Drawing.Size(35, 13);
+			this.label_customerName.TabIndex = 4;
+			this.label_customerName.Text = "Name";
 			// 
 			// textBox_lamberjackName
 			// 
-			this.textBox_lamberjackName.Location = new System.Drawing.Point(12, 25);
+			this.textBox_lamberjackName.Location = new System.Drawing.Point(62, 19);
 			this.textBox_lamberjackName.Name = "textBox_lamberjackName";
-			this.textBox_lamberjackName.Size = new System.Drawing.Size(152, 20);
+			this.textBox_lamberjackName.Size = new System.Drawing.Size(249, 20);
 			this.textBox_lamberjackName.TabIndex = 5;
-			this.textBox_lamberjackName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_lamberjackName_KeyUp);
 			// 
-			// button_addLamberjack
+			// button_addCustomer
 			// 
-			this.button_addLamberjack.Location = new System.Drawing.Point(170, 21);
-			this.button_addLamberjack.Name = "button_addLamberjack";
-			this.button_addLamberjack.Size = new System.Drawing.Size(159, 26);
-			this.button_addLamberjack.TabIndex = 6;
-			this.button_addLamberjack.Text = "Add Lamberjack";
-			this.button_addLamberjack.UseVisualStyleBackColor = true;
-			this.button_addLamberjack.Click += new System.EventHandler(this.button_addLamberjack_Click);
+			this.button_addCustomer.Location = new System.Drawing.Point(317, 17);
+			this.button_addCustomer.Name = "button_addCustomer";
+			this.button_addCustomer.Size = new System.Drawing.Size(57, 49);
+			this.button_addCustomer.TabIndex = 6;
+			this.button_addCustomer.Text = "Add";
+			this.button_addCustomer.UseVisualStyleBackColor = true;
+			this.button_addCustomer.Click += new System.EventHandler(this.button_addLamberjack_Click);
 			// 
 			// listBox_breakfastLine
 			// 
@@ -284,7 +287,7 @@ namespace CustomerQueueControl
 			// 
 			// button_loadMenu
 			// 
-			this.button_loadMenu.Location = new System.Drawing.Point(12, 441);
+			this.button_loadMenu.Location = new System.Drawing.Point(12, 565);
 			this.button_loadMenu.Name = "button_loadMenu";
 			this.button_loadMenu.Size = new System.Drawing.Size(75, 23);
 			this.button_loadMenu.TabIndex = 29;
@@ -294,7 +297,7 @@ namespace CustomerQueueControl
 			// 
 			// button_loadCustomer
 			// 
-			this.button_loadCustomer.Location = new System.Drawing.Point(104, 441);
+			this.button_loadCustomer.Location = new System.Drawing.Point(93, 565);
 			this.button_loadCustomer.Name = "button_loadCustomer";
 			this.button_loadCustomer.Size = new System.Drawing.Size(75, 23);
 			this.button_loadCustomer.TabIndex = 30;
@@ -302,11 +305,42 @@ namespace CustomerQueueControl
 			this.button_loadCustomer.UseVisualStyleBackColor = true;
 			this.button_loadCustomer.Click += new System.EventHandler(this.button_loadCustomer_Click);
 			// 
+			// groupBox_addCustomer
+			// 
+			this.groupBox_addCustomer.Controls.Add(this.textBox_customerDesc);
+			this.groupBox_addCustomer.Controls.Add(this.label1_customerDesc);
+			this.groupBox_addCustomer.Controls.Add(this.textBox_lamberjackName);
+			this.groupBox_addCustomer.Controls.Add(this.label_customerName);
+			this.groupBox_addCustomer.Controls.Add(this.button_addCustomer);
+			this.groupBox_addCustomer.Location = new System.Drawing.Point(15, 404);
+			this.groupBox_addCustomer.Name = "groupBox_addCustomer";
+			this.groupBox_addCustomer.Size = new System.Drawing.Size(382, 75);
+			this.groupBox_addCustomer.TabIndex = 31;
+			this.groupBox_addCustomer.TabStop = false;
+			this.groupBox_addCustomer.Text = "Новый Клиент";
+			// 
+			// textBox_customerDesc
+			// 
+			this.textBox_customerDesc.Location = new System.Drawing.Point(62, 45);
+			this.textBox_customerDesc.Name = "textBox_customerDesc";
+			this.textBox_customerDesc.Size = new System.Drawing.Size(249, 20);
+			this.textBox_customerDesc.TabIndex = 8;
+			// 
+			// label1_customerDesc
+			// 
+			this.label1_customerDesc.AutoSize = true;
+			this.label1_customerDesc.Location = new System.Drawing.Point(6, 46);
+			this.label1_customerDesc.Name = "label1_customerDesc";
+			this.label1_customerDesc.Size = new System.Drawing.Size(32, 13);
+			this.label1_customerDesc.TabIndex = 7;
+			this.label1_customerDesc.Text = "Desc";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(342, 476);
+			this.ClientSize = new System.Drawing.Size(430, 600);
+			this.Controls.Add(this.groupBox_addCustomer);
 			this.Controls.Add(this.button_loadCustomer);
 			this.Controls.Add(this.button_loadMenu);
 			this.Controls.Add(this.label_currentCustomer);
@@ -321,9 +355,6 @@ namespace CustomerQueueControl
 			this.Controls.Add(this.button_nextLamberjack);
 			this.Controls.Add(this.label_breakfastLine);
 			this.Controls.Add(this.listBox_breakfastLine);
-			this.Controls.Add(this.button_addLamberjack);
-			this.Controls.Add(this.textBox_lamberjackName);
-			this.Controls.Add(this.label_lamberjackName);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 			this.MaximizeBox = false;
 			this.Name = "Form1";
@@ -332,15 +363,17 @@ namespace CustomerQueueControl
 			this.Deactivate += new System.EventHandler(this.Form1_Deactivate);
 			this.groupBox_buttonSetCount.ResumeLayout(false);
 			this.groupBox2.ResumeLayout(false);
+			this.groupBox_addCustomer.ResumeLayout(false);
+			this.groupBox_addCustomer.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
 		}
 
 		#endregion
-		private System.Windows.Forms.Label label_lamberjackName;
+		private System.Windows.Forms.Label label_customerName;
 		private System.Windows.Forms.TextBox textBox_lamberjackName;
-		private System.Windows.Forms.Button button_addLamberjack;
+		private System.Windows.Forms.Button button_addCustomer;
 		private System.Windows.Forms.ListBox listBox_breakfastLine;
 		private System.Windows.Forms.Label label_breakfastLine;
 		private System.Windows.Forms.Button button_nextLamberjack;
@@ -364,6 +397,9 @@ namespace CustomerQueueControl
 		private System.Windows.Forms.Button button_loadCustomer;
 		private System.Windows.Forms.OpenFileDialog openFileDialog_menu;
 		private System.Windows.Forms.OpenFileDialog openFileDialog_customer;
+		private System.Windows.Forms.GroupBox groupBox_addCustomer;
+		private System.Windows.Forms.TextBox textBox_customerDesc;
+		private System.Windows.Forms.Label label1_customerDesc;
 	}
 }
 
