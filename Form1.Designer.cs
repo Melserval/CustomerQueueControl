@@ -30,10 +30,10 @@ namespace CustomerQueueControl
 		private void InitializeComponent()
 		{
 			this.label_customerName = new System.Windows.Forms.Label();
-			this.textBox_lamberjackName = new System.Windows.Forms.TextBox();
+			this.textBox_customerName = new System.Windows.Forms.TextBox();
 			this.button_addCustomer = new System.Windows.Forms.Button();
-			this.listBox_breakfastLine = new System.Windows.Forms.ListBox();
-			this.label_breakfastLine = new System.Windows.Forms.Label();
+			this.listBox_customerLine = new System.Windows.Forms.ListBox();
+			this.label_customerLine = new System.Windows.Forms.Label();
 			this.button_nextLamberjack = new System.Windows.Forms.Button();
 			this.textBox_hasFlatjack = new System.Windows.Forms.TextBox();
 			this.groupBox_buttonSetCount = new System.Windows.Forms.GroupBox();
@@ -58,9 +58,18 @@ namespace CustomerQueueControl
 			this.groupBox_addCustomer = new System.Windows.Forms.GroupBox();
 			this.textBox_customerDesc = new System.Windows.Forms.TextBox();
 			this.label1_customerDesc = new System.Windows.Forms.Label();
+			this.groupBox_addDish = new System.Windows.Forms.GroupBox();
+			this.label_dishPrice = new System.Windows.Forms.Label();
+			this.textBox_dishPrice = new System.Windows.Forms.TextBox();
+			this.button_addDish = new System.Windows.Forms.Button();
+			this.textBox_dishDesc = new System.Windows.Forms.TextBox();
+			this.label_dishDesc = new System.Windows.Forms.Label();
+			this.textBox_dishName = new System.Windows.Forms.TextBox();
+			this.label_dishName = new System.Windows.Forms.Label();
 			this.groupBox_buttonSetCount.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox_addCustomer.SuspendLayout();
+			this.groupBox_addDish.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label_customerName
@@ -72,39 +81,40 @@ namespace CustomerQueueControl
 			this.label_customerName.TabIndex = 4;
 			this.label_customerName.Text = "Name";
 			// 
-			// textBox_lamberjackName
+			// textBox_customerName
 			// 
-			this.textBox_lamberjackName.Location = new System.Drawing.Point(62, 19);
-			this.textBox_lamberjackName.Name = "textBox_lamberjackName";
-			this.textBox_lamberjackName.Size = new System.Drawing.Size(249, 20);
-			this.textBox_lamberjackName.TabIndex = 5;
+			this.textBox_customerName.Location = new System.Drawing.Point(62, 19);
+			this.textBox_customerName.Name = "textBox_customerName";
+			this.textBox_customerName.Size = new System.Drawing.Size(249, 20);
+			this.textBox_customerName.TabIndex = 5;
 			// 
 			// button_addCustomer
 			// 
+			this.button_addCustomer.BackColor = System.Drawing.Color.LightBlue;
 			this.button_addCustomer.Location = new System.Drawing.Point(317, 17);
 			this.button_addCustomer.Name = "button_addCustomer";
 			this.button_addCustomer.Size = new System.Drawing.Size(57, 49);
 			this.button_addCustomer.TabIndex = 6;
 			this.button_addCustomer.Text = "Add";
-			this.button_addCustomer.UseVisualStyleBackColor = true;
+			this.button_addCustomer.UseVisualStyleBackColor = false;
 			this.button_addCustomer.Click += new System.EventHandler(this.button_addLamberjack_Click);
 			// 
-			// listBox_breakfastLine
+			// listBox_customerLine
 			// 
-			this.listBox_breakfastLine.FormattingEnabled = true;
-			this.listBox_breakfastLine.Location = new System.Drawing.Point(17, 76);
-			this.listBox_breakfastLine.Name = "listBox_breakfastLine";
-			this.listBox_breakfastLine.Size = new System.Drawing.Size(132, 186);
-			this.listBox_breakfastLine.TabIndex = 7;
+			this.listBox_customerLine.FormattingEnabled = true;
+			this.listBox_customerLine.Location = new System.Drawing.Point(17, 76);
+			this.listBox_customerLine.Name = "listBox_customerLine";
+			this.listBox_customerLine.Size = new System.Drawing.Size(132, 186);
+			this.listBox_customerLine.TabIndex = 7;
 			// 
-			// label_breakfastLine
+			// label_customerLine
 			// 
-			this.label_breakfastLine.AutoSize = true;
-			this.label_breakfastLine.Location = new System.Drawing.Point(37, 60);
-			this.label_breakfastLine.Name = "label_breakfastLine";
-			this.label_breakfastLine.Size = new System.Drawing.Size(75, 13);
-			this.label_breakfastLine.TabIndex = 8;
-			this.label_breakfastLine.Text = "Breakfast Line";
+			this.label_customerLine.AutoSize = true;
+			this.label_customerLine.Location = new System.Drawing.Point(37, 60);
+			this.label_customerLine.Name = "label_customerLine";
+			this.label_customerLine.Size = new System.Drawing.Size(74, 13);
+			this.label_customerLine.TabIndex = 8;
+			this.label_customerLine.Text = "Customer Line";
 			// 
 			// button_nextLamberjack
 			// 
@@ -287,7 +297,7 @@ namespace CustomerQueueControl
 			// 
 			// button_loadMenu
 			// 
-			this.button_loadMenu.Location = new System.Drawing.Point(12, 565);
+			this.button_loadMenu.Location = new System.Drawing.Point(12, 574);
 			this.button_loadMenu.Name = "button_loadMenu";
 			this.button_loadMenu.Size = new System.Drawing.Size(75, 23);
 			this.button_loadMenu.TabIndex = 29;
@@ -297,7 +307,7 @@ namespace CustomerQueueControl
 			// 
 			// button_loadCustomer
 			// 
-			this.button_loadCustomer.Location = new System.Drawing.Point(93, 565);
+			this.button_loadCustomer.Location = new System.Drawing.Point(93, 574);
 			this.button_loadCustomer.Name = "button_loadCustomer";
 			this.button_loadCustomer.Size = new System.Drawing.Size(75, 23);
 			this.button_loadCustomer.TabIndex = 30;
@@ -309,7 +319,7 @@ namespace CustomerQueueControl
 			// 
 			this.groupBox_addCustomer.Controls.Add(this.textBox_customerDesc);
 			this.groupBox_addCustomer.Controls.Add(this.label1_customerDesc);
-			this.groupBox_addCustomer.Controls.Add(this.textBox_lamberjackName);
+			this.groupBox_addCustomer.Controls.Add(this.textBox_customerName);
 			this.groupBox_addCustomer.Controls.Add(this.label_customerName);
 			this.groupBox_addCustomer.Controls.Add(this.button_addCustomer);
 			this.groupBox_addCustomer.Location = new System.Drawing.Point(15, 404);
@@ -317,7 +327,7 @@ namespace CustomerQueueControl
 			this.groupBox_addCustomer.Size = new System.Drawing.Size(382, 75);
 			this.groupBox_addCustomer.TabIndex = 31;
 			this.groupBox_addCustomer.TabStop = false;
-			this.groupBox_addCustomer.Text = "Новый Клиент";
+			this.groupBox_addCustomer.Text = "New Customer";
 			// 
 			// textBox_customerDesc
 			// 
@@ -335,11 +345,87 @@ namespace CustomerQueueControl
 			this.label1_customerDesc.TabIndex = 7;
 			this.label1_customerDesc.Text = "Desc";
 			// 
+			// groupBox_addDish
+			// 
+			this.groupBox_addDish.Controls.Add(this.label_dishPrice);
+			this.groupBox_addDish.Controls.Add(this.textBox_dishPrice);
+			this.groupBox_addDish.Controls.Add(this.button_addDish);
+			this.groupBox_addDish.Controls.Add(this.textBox_dishDesc);
+			this.groupBox_addDish.Controls.Add(this.label_dishDesc);
+			this.groupBox_addDish.Controls.Add(this.textBox_dishName);
+			this.groupBox_addDish.Controls.Add(this.label_dishName);
+			this.groupBox_addDish.Location = new System.Drawing.Point(13, 486);
+			this.groupBox_addDish.Name = "groupBox_addDish";
+			this.groupBox_addDish.Size = new System.Drawing.Size(384, 73);
+			this.groupBox_addDish.TabIndex = 32;
+			this.groupBox_addDish.TabStop = false;
+			this.groupBox_addDish.Text = "New Dish";
+			// 
+			// label_dishPrice
+			// 
+			this.label_dishPrice.AutoSize = true;
+			this.label_dishPrice.Location = new System.Drawing.Point(233, 20);
+			this.label_dishPrice.Name = "label_dishPrice";
+			this.label_dishPrice.Size = new System.Drawing.Size(31, 13);
+			this.label_dishPrice.TabIndex = 6;
+			this.label_dishPrice.Text = "Price";
+			// 
+			// textBox_dishPrice
+			// 
+			this.textBox_dishPrice.Location = new System.Drawing.Point(264, 17);
+			this.textBox_dishPrice.Name = "textBox_dishPrice";
+			this.textBox_dishPrice.Size = new System.Drawing.Size(49, 20);
+			this.textBox_dishPrice.TabIndex = 2;
+			// 
+			// button_addDish
+			// 
+			this.button_addDish.BackColor = System.Drawing.Color.LightBlue;
+			this.button_addDish.Location = new System.Drawing.Point(319, 17);
+			this.button_addDish.Name = "button_addDish";
+			this.button_addDish.Size = new System.Drawing.Size(57, 47);
+			this.button_addDish.TabIndex = 4;
+			this.button_addDish.Text = "Add";
+			this.button_addDish.UseVisualStyleBackColor = false;
+			this.button_addDish.Click += new System.EventHandler(this.button_addDish_Click);
+			// 
+			// textBox_dishDesc
+			// 
+			this.textBox_dishDesc.Location = new System.Drawing.Point(64, 44);
+			this.textBox_dishDesc.Name = "textBox_dishDesc";
+			this.textBox_dishDesc.Size = new System.Drawing.Size(249, 20);
+			this.textBox_dishDesc.TabIndex = 3;
+			// 
+			// label_dishDesc
+			// 
+			this.label_dishDesc.AutoSize = true;
+			this.label_dishDesc.Location = new System.Drawing.Point(6, 47);
+			this.label_dishDesc.Name = "label_dishDesc";
+			this.label_dishDesc.Size = new System.Drawing.Size(32, 13);
+			this.label_dishDesc.TabIndex = 2;
+			this.label_dishDesc.Text = "Desc";
+			// 
+			// textBox_dishName
+			// 
+			this.textBox_dishName.Location = new System.Drawing.Point(64, 17);
+			this.textBox_dishName.Name = "textBox_dishName";
+			this.textBox_dishName.Size = new System.Drawing.Size(166, 20);
+			this.textBox_dishName.TabIndex = 1;
+			// 
+			// label_dishName
+			// 
+			this.label_dishName.AutoSize = true;
+			this.label_dishName.Location = new System.Drawing.Point(7, 20);
+			this.label_dishName.Name = "label_dishName";
+			this.label_dishName.Size = new System.Drawing.Size(35, 13);
+			this.label_dishName.TabIndex = 0;
+			this.label_dishName.Text = "Name";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(430, 600);
+			this.ClientSize = new System.Drawing.Size(430, 605);
+			this.Controls.Add(this.groupBox_addDish);
 			this.Controls.Add(this.groupBox_addCustomer);
 			this.Controls.Add(this.button_loadCustomer);
 			this.Controls.Add(this.button_loadMenu);
@@ -353,8 +439,8 @@ namespace CustomerQueueControl
 			this.Controls.Add(this.groupBox_buttonSetCount);
 			this.Controls.Add(this.textBox_hasFlatjack);
 			this.Controls.Add(this.button_nextLamberjack);
-			this.Controls.Add(this.label_breakfastLine);
-			this.Controls.Add(this.listBox_breakfastLine);
+			this.Controls.Add(this.label_customerLine);
+			this.Controls.Add(this.listBox_customerLine);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 			this.MaximizeBox = false;
 			this.Name = "Form1";
@@ -365,6 +451,8 @@ namespace CustomerQueueControl
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox_addCustomer.ResumeLayout(false);
 			this.groupBox_addCustomer.PerformLayout();
+			this.groupBox_addDish.ResumeLayout(false);
+			this.groupBox_addDish.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -372,10 +460,10 @@ namespace CustomerQueueControl
 
 		#endregion
 		private System.Windows.Forms.Label label_customerName;
-		private System.Windows.Forms.TextBox textBox_lamberjackName;
+		private System.Windows.Forms.TextBox textBox_customerName;
 		private System.Windows.Forms.Button button_addCustomer;
-		private System.Windows.Forms.ListBox listBox_breakfastLine;
-		private System.Windows.Forms.Label label_breakfastLine;
+		private System.Windows.Forms.ListBox listBox_customerLine;
+		private System.Windows.Forms.Label label_customerLine;
 		private System.Windows.Forms.Button button_nextLamberjack;
 		private System.Windows.Forms.TextBox textBox_hasFlatjack;
 		private System.Windows.Forms.GroupBox groupBox_buttonSetCount;
@@ -400,6 +488,14 @@ namespace CustomerQueueControl
 		private System.Windows.Forms.GroupBox groupBox_addCustomer;
 		private System.Windows.Forms.TextBox textBox_customerDesc;
 		private System.Windows.Forms.Label label1_customerDesc;
+		private System.Windows.Forms.GroupBox groupBox_addDish;
+		private System.Windows.Forms.Label label_dishPrice;
+		private System.Windows.Forms.TextBox textBox_dishPrice;
+		private System.Windows.Forms.Button button_addDish;
+		private System.Windows.Forms.TextBox textBox_dishDesc;
+		private System.Windows.Forms.Label label_dishDesc;
+		private System.Windows.Forms.TextBox textBox_dishName;
+		private System.Windows.Forms.Label label_dishName;
 	}
 }
 

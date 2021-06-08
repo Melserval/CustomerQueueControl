@@ -42,7 +42,7 @@ namespace CustomerQueueControl
 		private void lamberEnqueue(Customer lamb)
 		{
 			this.breakfastLine.Enqueue(lamb);
-			this.listBox_breakfastLine.Items.Add(lamb.Name);
+			this.listBox_customerLine.Items.Add(lamb.Name);
 			if (this.breakfastLine.Count == 1)
 			{
 				this.label_currentCustomer.Text = lamb.Name;
@@ -99,21 +99,21 @@ namespace CustomerQueueControl
 			this.listBox_orderState.Items.Add($"выдано {flapCount} {food.DisplayName}");
 		}
 
-		// Добавление нового клиента из формы (клик кнопки).
+		// Добавление (создание) нового клиента из формы.
 		private void button_addLamberjack_Click(object sender, EventArgs e)
 		{
-			if (String.IsNullOrEmpty(textBox_lamberjackName.Text))
+			if (String.IsNullOrEmpty(textBox_customerName.Text))
 			{
-				MessageBox.Show("Необходимо ввести имя");
+				MessageBox.Show("Необходимо ввести имя клиента.");
+				return;
 			}
-			else
-			{
-				this.lamberEnqueue(new Customer(
-					textBox_lamberjackName.Text,
-					String.IsNullOrEmpty(textBox_customerDesc.Text) ? null : textBox_customerDesc.Text
-				));
-				textBox_lamberjackName.Text = null;
-			}
+
+			this.lamberEnqueue(new Customer(
+				textBox_customerName.Text,
+				String.IsNullOrEmpty(textBox_customerDesc.Text) ? null : textBox_customerDesc.Text
+			));
+			this.textBox_customerName.Clear();
+			this.textBox_customerDesc.Clear();
 		}
 
 		// Завершение операций с текущим клиентом в очереди.
@@ -133,7 +133,7 @@ namespace CustomerQueueControl
 			);
 			this.flapjackOrder.Clear();
 			this.breakfastLine.Dequeue().EatFlapjacks(this.textBox_hasFlatjack);
-			this.listBox_breakfastLine.Items.RemoveAt(0);
+			this.listBox_customerLine.Items.RemoveAt(0);
 			this.listBox_orderState.Items.Clear();
 
 			// выключение контролов и очистка полей зависящих от наличия очереди.
@@ -199,6 +199,34 @@ namespace CustomerQueueControl
 		private void Form1_Deactivate(object sender, EventArgs e)
 		{
 			File.WriteAllText("form.log", "Form is deactivated.");
+		}
+
+		// Добавление (создание) нового блюда из формы.
+		private void button_addDish_Click(object sender, EventArgs e)
+		{
+			if (String.IsNullOrEmpty(this.textBox_dishName.Text))
+			{
+				MessageBox.Show("Необходимо ввести название блюда");
+				return;
+			}
+			if (String.IsNullOrEmpty(this.textBox_dishPrice.Text) || 
+				!double.TryParse(this.textBox_dishPrice.Text, out double price))
+			{
+				MessageBox.Show("Необходимо указать цену или она имеет неверный формат.");
+				return;
+			}
+			// TODO: Разобраться с преобразованием запятой и настройками локали.
+
+			this.mainMealMenu.Add(
+				new Dish(
+					this.textBox_dishName.Text,
+					price,
+					String.IsNullOrEmpty(this.textBox_dishDesc.Text) ? null : this.textBox_dishDesc.Text
+				)
+			);
+			this.textBox_dishName.Clear();
+			this.textBox_dishPrice.Clear();
+			this.textBox_dishDesc.Clear();
 		}
 	}
 }
