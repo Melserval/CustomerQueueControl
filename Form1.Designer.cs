@@ -43,7 +43,6 @@ namespace CustomerQueueControl
 			this.button_foodNum2 = new System.Windows.Forms.Button();
 			this.button_foodNum1 = new System.Windows.Forms.Button();
 			this.listBox_orderState = new System.Windows.Forms.ListBox();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.button_addFoodCount = new System.Windows.Forms.Button();
 			this.button_removeFoodCount = new System.Windows.Forms.Button();
 			this.label_menu = new System.Windows.Forms.Label();
@@ -66,8 +65,9 @@ namespace CustomerQueueControl
 			this.label_dishDesc = new System.Windows.Forms.Label();
 			this.textBox_dishName = new System.Windows.Forms.TextBox();
 			this.label_dishName = new System.Windows.Forms.Label();
+			this.label_order = new System.Windows.Forms.Label();
+			this.textBox_currentCustomerName = new System.Windows.Forms.TextBox();
 			this.groupBox_buttonSetCount.SuspendLayout();
-			this.groupBox2.SuspendLayout();
 			this.groupBox_addCustomer.SuspendLayout();
 			this.groupBox_addDish.SuspendLayout();
 			this.SuspendLayout();
@@ -102,15 +102,15 @@ namespace CustomerQueueControl
 			// listBox_customerLine
 			// 
 			this.listBox_customerLine.FormattingEnabled = true;
-			this.listBox_customerLine.Location = new System.Drawing.Point(17, 76);
+			this.listBox_customerLine.Location = new System.Drawing.Point(12, 42);
 			this.listBox_customerLine.Name = "listBox_customerLine";
-			this.listBox_customerLine.Size = new System.Drawing.Size(132, 186);
+			this.listBox_customerLine.Size = new System.Drawing.Size(181, 329);
 			this.listBox_customerLine.TabIndex = 7;
 			// 
 			// label_customerLine
 			// 
 			this.label_customerLine.AutoSize = true;
-			this.label_customerLine.Location = new System.Drawing.Point(37, 60);
+			this.label_customerLine.Location = new System.Drawing.Point(64, 26);
 			this.label_customerLine.Name = "label_customerLine";
 			this.label_customerLine.Size = new System.Drawing.Size(74, 13);
 			this.label_customerLine.TabIndex = 8;
@@ -118,46 +118,54 @@ namespace CustomerQueueControl
 			// 
 			// button_nextLamberjack
 			// 
+			this.button_nextLamberjack.BackColor = System.Drawing.Color.PaleGreen;
 			this.button_nextLamberjack.Enabled = false;
-			this.button_nextLamberjack.Location = new System.Drawing.Point(16, 351);
+			this.button_nextLamberjack.Location = new System.Drawing.Point(213, 321);
 			this.button_nextLamberjack.Name = "button_nextLamberjack";
-			this.button_nextLamberjack.Size = new System.Drawing.Size(316, 35);
+			this.button_nextLamberjack.Size = new System.Drawing.Size(165, 53);
 			this.button_nextLamberjack.TabIndex = 13;
 			this.button_nextLamberjack.Text = "Next lamberjack";
-			this.button_nextLamberjack.UseVisualStyleBackColor = true;
+			this.button_nextLamberjack.UseVisualStyleBackColor = false;
 			this.button_nextLamberjack.Click += new System.EventHandler(this.button_nextLamberjack_Click);
 			// 
 			// textBox_hasFlatjack
 			// 
 			this.textBox_hasFlatjack.HideSelection = false;
-			this.textBox_hasFlatjack.Location = new System.Drawing.Point(17, 269);
+			this.textBox_hasFlatjack.Location = new System.Drawing.Point(12, 392);
 			this.textBox_hasFlatjack.Multiline = true;
 			this.textBox_hasFlatjack.Name = "textBox_hasFlatjack";
 			this.textBox_hasFlatjack.ReadOnly = true;
-			this.textBox_hasFlatjack.Size = new System.Drawing.Size(132, 70);
+			this.textBox_hasFlatjack.Size = new System.Drawing.Size(181, 118);
 			this.textBox_hasFlatjack.TabIndex = 14;
 			this.textBox_hasFlatjack.TabStop = false;
 			this.textBox_hasFlatjack.WordWrap = false;
 			// 
 			// groupBox_buttonSetCount
 			// 
+			this.groupBox_buttonSetCount.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox_buttonSetCount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.groupBox_buttonSetCount.Controls.Add(this.button_removeFoodCount);
+			this.groupBox_buttonSetCount.Controls.Add(this.button_addFoodCount);
 			this.groupBox_buttonSetCount.Controls.Add(this.button_foodNum5);
 			this.groupBox_buttonSetCount.Controls.Add(this.button_foodNum4);
 			this.groupBox_buttonSetCount.Controls.Add(this.button_foodNum3);
 			this.groupBox_buttonSetCount.Controls.Add(this.button_foodNum2);
 			this.groupBox_buttonSetCount.Controls.Add(this.button_foodNum1);
 			this.groupBox_buttonSetCount.Enabled = false;
-			this.groupBox_buttonSetCount.Location = new System.Drawing.Point(156, 71);
+			this.groupBox_buttonSetCount.Location = new System.Drawing.Point(381, 36);
 			this.groupBox_buttonSetCount.Name = "groupBox_buttonSetCount";
-			this.groupBox_buttonSetCount.Size = new System.Drawing.Size(36, 130);
+			this.groupBox_buttonSetCount.Size = new System.Drawing.Size(43, 270);
 			this.groupBox_buttonSetCount.TabIndex = 16;
 			this.groupBox_buttonSetCount.TabStop = false;
 			// 
 			// button_foodNum5
 			// 
-			this.button_foodNum5.Location = new System.Drawing.Point(3, 104);
+			this.button_foodNum5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.button_foodNum5.Location = new System.Drawing.Point(6, 126);
 			this.button_foodNum5.Name = "button_foodNum5";
-			this.button_foodNum5.Size = new System.Drawing.Size(30, 23);
+			this.button_foodNum5.Size = new System.Drawing.Size(31, 23);
 			this.button_foodNum5.TabIndex = 4;
 			this.button_foodNum5.Tag = "5";
 			this.button_foodNum5.Text = "5";
@@ -166,9 +174,10 @@ namespace CustomerQueueControl
 			// 
 			// button_foodNum4
 			// 
-			this.button_foodNum4.Location = new System.Drawing.Point(3, 80);
+			this.button_foodNum4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.button_foodNum4.Location = new System.Drawing.Point(6, 97);
 			this.button_foodNum4.Name = "button_foodNum4";
-			this.button_foodNum4.Size = new System.Drawing.Size(30, 23);
+			this.button_foodNum4.Size = new System.Drawing.Size(31, 23);
 			this.button_foodNum4.TabIndex = 3;
 			this.button_foodNum4.Tag = "4";
 			this.button_foodNum4.Text = "4";
@@ -177,9 +186,10 @@ namespace CustomerQueueControl
 			// 
 			// button_foodNum3
 			// 
-			this.button_foodNum3.Location = new System.Drawing.Point(3, 56);
+			this.button_foodNum3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.button_foodNum3.Location = new System.Drawing.Point(6, 68);
 			this.button_foodNum3.Name = "button_foodNum3";
-			this.button_foodNum3.Size = new System.Drawing.Size(30, 23);
+			this.button_foodNum3.Size = new System.Drawing.Size(31, 23);
 			this.button_foodNum3.TabIndex = 2;
 			this.button_foodNum3.Tag = "3";
 			this.button_foodNum3.Text = "3";
@@ -188,9 +198,10 @@ namespace CustomerQueueControl
 			// 
 			// button_foodNum2
 			// 
-			this.button_foodNum2.Location = new System.Drawing.Point(3, 32);
+			this.button_foodNum2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.button_foodNum2.Location = new System.Drawing.Point(6, 39);
 			this.button_foodNum2.Name = "button_foodNum2";
-			this.button_foodNum2.Size = new System.Drawing.Size(30, 23);
+			this.button_foodNum2.Size = new System.Drawing.Size(31, 23);
 			this.button_foodNum2.TabIndex = 1;
 			this.button_foodNum2.Tag = "2";
 			this.button_foodNum2.Text = "2";
@@ -199,9 +210,11 @@ namespace CustomerQueueControl
 			// 
 			// button_foodNum1
 			// 
-			this.button_foodNum1.Location = new System.Drawing.Point(3, 9);
+			this.button_foodNum1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.button_foodNum1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.button_foodNum1.Location = new System.Drawing.Point(6, 10);
 			this.button_foodNum1.Name = "button_foodNum1";
-			this.button_foodNum1.Size = new System.Drawing.Size(30, 23);
+			this.button_foodNum1.Size = new System.Drawing.Size(31, 23);
 			this.button_foodNum1.TabIndex = 0;
 			this.button_foodNum1.Tag = "1";
 			this.button_foodNum1.Text = "1";
@@ -211,26 +224,17 @@ namespace CustomerQueueControl
 			// listBox_orderState
 			// 
 			this.listBox_orderState.FormattingEnabled = true;
-			this.listBox_orderState.Location = new System.Drawing.Point(159, 270);
+			this.listBox_orderState.Location = new System.Drawing.Point(213, 107);
 			this.listBox_orderState.Name = "listBox_orderState";
-			this.listBox_orderState.Size = new System.Drawing.Size(132, 69);
+			this.listBox_orderState.Size = new System.Drawing.Size(165, 199);
 			this.listBox_orderState.TabIndex = 17;
-			// 
-			// groupBox2
-			// 
-			this.groupBox2.Controls.Add(this.button_addFoodCount);
-			this.groupBox2.Controls.Add(this.button_removeFoodCount);
-			this.groupBox2.Location = new System.Drawing.Point(295, 264);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(37, 76);
-			this.groupBox2.TabIndex = 18;
-			this.groupBox2.TabStop = false;
 			// 
 			// button_addFoodCount
 			// 
-			this.button_addFoodCount.Location = new System.Drawing.Point(4, 10);
+			this.button_addFoodCount.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.button_addFoodCount.Location = new System.Drawing.Point(6, 205);
 			this.button_addFoodCount.Name = "button_addFoodCount";
-			this.button_addFoodCount.Size = new System.Drawing.Size(27, 27);
+			this.button_addFoodCount.Size = new System.Drawing.Size(31, 27);
 			this.button_addFoodCount.TabIndex = 1;
 			this.button_addFoodCount.Text = "+";
 			this.button_addFoodCount.UseVisualStyleBackColor = true;
@@ -238,9 +242,10 @@ namespace CustomerQueueControl
 			// 
 			// button_removeFoodCount
 			// 
-			this.button_removeFoodCount.Location = new System.Drawing.Point(4, 43);
+			this.button_removeFoodCount.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.button_removeFoodCount.Location = new System.Drawing.Point(6, 237);
 			this.button_removeFoodCount.Name = "button_removeFoodCount";
-			this.button_removeFoodCount.Size = new System.Drawing.Size(27, 27);
+			this.button_removeFoodCount.Size = new System.Drawing.Size(31, 27);
 			this.button_removeFoodCount.TabIndex = 0;
 			this.button_removeFoodCount.Text = "-";
 			this.button_removeFoodCount.UseVisualStyleBackColor = true;
@@ -249,7 +254,7 @@ namespace CustomerQueueControl
 			// label_menu
 			// 
 			this.label_menu.AutoSize = true;
-			this.label_menu.Location = new System.Drawing.Point(243, 61);
+			this.label_menu.Location = new System.Drawing.Point(494, 25);
 			this.label_menu.Name = "label_menu";
 			this.label_menu.Size = new System.Drawing.Size(34, 13);
 			this.label_menu.TabIndex = 19;
@@ -258,7 +263,7 @@ namespace CustomerQueueControl
 			// label_quantity
 			// 
 			this.label_quantity.AutoSize = true;
-			this.label_quantity.Location = new System.Drawing.Point(155, 60);
+			this.label_quantity.Location = new System.Drawing.Point(378, 25);
 			this.label_quantity.Name = "label_quantity";
 			this.label_quantity.Size = new System.Drawing.Size(46, 13);
 			this.label_quantity.TabIndex = 20;
@@ -268,36 +273,36 @@ namespace CustomerQueueControl
 			// 
 			this.listBox_menu.Enabled = false;
 			this.listBox_menu.FormattingEnabled = true;
-			this.listBox_menu.Location = new System.Drawing.Point(200, 78);
+			this.listBox_menu.Location = new System.Drawing.Point(428, 42);
 			this.listBox_menu.Name = "listBox_menu";
-			this.listBox_menu.Size = new System.Drawing.Size(129, 121);
+			this.listBox_menu.Size = new System.Drawing.Size(165, 264);
 			this.listBox_menu.TabIndex = 23;
 			this.listBox_menu.SelectedIndexChanged += new System.EventHandler(this.listBox_menu_SelectedIndexChanged);
 			// 
 			// label_currentCustomer
 			// 
 			this.label_currentCustomer.AutoSize = true;
-			this.label_currentCustomer.Location = new System.Drawing.Point(186, 254);
+			this.label_currentCustomer.Location = new System.Drawing.Point(248, 25);
 			this.label_currentCustomer.MaximumSize = new System.Drawing.Size(200, 22);
 			this.label_currentCustomer.Name = "label_currentCustomer";
-			this.label_currentCustomer.Size = new System.Drawing.Size(113, 13);
+			this.label_currentCustomer.Size = new System.Drawing.Size(88, 13);
 			this.label_currentCustomer.TabIndex = 24;
-			this.label_currentCustomer.Text = "Чрезвычано важный";
+			this.label_currentCustomer.Text = "Current Customer";
 			this.label_currentCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// textBox_descriptionMenuItem
 			// 
 			this.textBox_descriptionMenuItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox_descriptionMenuItem.Location = new System.Drawing.Point(157, 212);
+			this.textBox_descriptionMenuItem.Location = new System.Drawing.Point(430, 321);
 			this.textBox_descriptionMenuItem.Multiline = true;
 			this.textBox_descriptionMenuItem.Name = "textBox_descriptionMenuItem";
-			this.textBox_descriptionMenuItem.Size = new System.Drawing.Size(173, 34);
+			this.textBox_descriptionMenuItem.Size = new System.Drawing.Size(163, 53);
 			this.textBox_descriptionMenuItem.TabIndex = 28;
 			this.textBox_descriptionMenuItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// button_loadMenu
 			// 
-			this.button_loadMenu.Location = new System.Drawing.Point(12, 574);
+			this.button_loadMenu.Location = new System.Drawing.Point(12, 523);
 			this.button_loadMenu.Name = "button_loadMenu";
 			this.button_loadMenu.Size = new System.Drawing.Size(75, 23);
 			this.button_loadMenu.TabIndex = 29;
@@ -307,7 +312,7 @@ namespace CustomerQueueControl
 			// 
 			// button_loadCustomer
 			// 
-			this.button_loadCustomer.Location = new System.Drawing.Point(93, 574);
+			this.button_loadCustomer.Location = new System.Drawing.Point(118, 523);
 			this.button_loadCustomer.Name = "button_loadCustomer";
 			this.button_loadCustomer.Size = new System.Drawing.Size(75, 23);
 			this.button_loadCustomer.TabIndex = 30;
@@ -322,9 +327,9 @@ namespace CustomerQueueControl
 			this.groupBox_addCustomer.Controls.Add(this.textBox_customerName);
 			this.groupBox_addCustomer.Controls.Add(this.label_customerName);
 			this.groupBox_addCustomer.Controls.Add(this.button_addCustomer);
-			this.groupBox_addCustomer.Location = new System.Drawing.Point(15, 404);
+			this.groupBox_addCustomer.Location = new System.Drawing.Point(209, 471);
 			this.groupBox_addCustomer.Name = "groupBox_addCustomer";
-			this.groupBox_addCustomer.Size = new System.Drawing.Size(382, 75);
+			this.groupBox_addCustomer.Size = new System.Drawing.Size(384, 75);
 			this.groupBox_addCustomer.TabIndex = 31;
 			this.groupBox_addCustomer.TabStop = false;
 			this.groupBox_addCustomer.Text = "New Customer";
@@ -354,7 +359,7 @@ namespace CustomerQueueControl
 			this.groupBox_addDish.Controls.Add(this.label_dishDesc);
 			this.groupBox_addDish.Controls.Add(this.textBox_dishName);
 			this.groupBox_addDish.Controls.Add(this.label_dishName);
-			this.groupBox_addDish.Location = new System.Drawing.Point(13, 486);
+			this.groupBox_addDish.Location = new System.Drawing.Point(209, 392);
 			this.groupBox_addDish.Name = "groupBox_addDish";
 			this.groupBox_addDish.Size = new System.Drawing.Size(384, 73);
 			this.groupBox_addDish.TabIndex = 32;
@@ -420,11 +425,39 @@ namespace CustomerQueueControl
 			this.label_dishName.TabIndex = 0;
 			this.label_dishName.Text = "Name";
 			// 
+			// label_order
+			// 
+			this.label_order.AutoSize = true;
+			this.label_order.Location = new System.Drawing.Point(270, 90);
+			this.label_order.Name = "label_order";
+			this.label_order.Size = new System.Drawing.Size(33, 13);
+			this.label_order.TabIndex = 33;
+			this.label_order.Text = "Order";
+			// 
+			// textBox_currentCustomerName
+			// 
+			this.textBox_currentCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox_currentCustomerName.BackColor = System.Drawing.SystemColors.Window;
+			this.textBox_currentCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBox_currentCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.textBox_currentCustomerName.Location = new System.Drawing.Point(213, 46);
+			this.textBox_currentCustomerName.MaximumSize = new System.Drawing.Size(200, 30);
+			this.textBox_currentCustomerName.Multiline = true;
+			this.textBox_currentCustomerName.Name = "textBox_currentCustomerName";
+			this.textBox_currentCustomerName.ReadOnly = true;
+			this.textBox_currentCustomerName.Size = new System.Drawing.Size(165, 27);
+			this.textBox_currentCustomerName.TabIndex = 34;
+			this.textBox_currentCustomerName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(430, 605);
+			this.ClientSize = new System.Drawing.Size(606, 664);
+			this.Controls.Add(this.textBox_currentCustomerName);
+			this.Controls.Add(this.label_order);
 			this.Controls.Add(this.groupBox_addDish);
 			this.Controls.Add(this.groupBox_addCustomer);
 			this.Controls.Add(this.button_loadCustomer);
@@ -434,7 +467,6 @@ namespace CustomerQueueControl
 			this.Controls.Add(this.listBox_menu);
 			this.Controls.Add(this.label_quantity);
 			this.Controls.Add(this.label_menu);
-			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.listBox_orderState);
 			this.Controls.Add(this.groupBox_buttonSetCount);
 			this.Controls.Add(this.textBox_hasFlatjack);
@@ -448,7 +480,6 @@ namespace CustomerQueueControl
 			this.Text = "Breakfast for Lamberjack";
 			this.Deactivate += new System.EventHandler(this.Form1_Deactivate);
 			this.groupBox_buttonSetCount.ResumeLayout(false);
-			this.groupBox2.ResumeLayout(false);
 			this.groupBox_addCustomer.ResumeLayout(false);
 			this.groupBox_addCustomer.PerformLayout();
 			this.groupBox_addDish.ResumeLayout(false);
@@ -473,7 +504,6 @@ namespace CustomerQueueControl
 		private System.Windows.Forms.Button button_foodNum2;
 		private System.Windows.Forms.Button button_foodNum1;
 		private System.Windows.Forms.ListBox listBox_orderState;
-		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Button button_addFoodCount;
 		private System.Windows.Forms.Button button_removeFoodCount;
 		private System.Windows.Forms.Label label_menu;
@@ -496,6 +526,8 @@ namespace CustomerQueueControl
 		private System.Windows.Forms.Label label_dishDesc;
 		private System.Windows.Forms.TextBox textBox_dishName;
 		private System.Windows.Forms.Label label_dishName;
+		private System.Windows.Forms.Label label_order;
+		private System.Windows.Forms.TextBox textBox_currentCustomerName;
 	}
 }
 

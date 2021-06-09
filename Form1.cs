@@ -33,7 +33,6 @@ namespace CustomerQueueControl
 
 			this.openFileDialog_menu.Filter = "JSON |*.json| All Files |*.*";
 			this.openFileDialog_customer.Filter = "JSON |*.json| All Files |*.*";
-			this.openFileDialog_customer.InitialDirectory = Environment.CurrentDirectory;
 		}
 
 		#region --- методы операций управления очередью клиентов. ---
@@ -45,15 +44,12 @@ namespace CustomerQueueControl
 			this.listBox_customerLine.Items.Add(lamb.Name);
 			if (this.breakfastLine.Count == 1)
 			{
-				this.label_currentCustomer.Text = lamb.Name;
+				this.textBox_currentCustomerName.Text = lamb.Name;
 			}
 			// включение контролов зависящих от наличия очереди.
 
 			this.listBox_menu.Enabled = true;
 			this.button_nextLamberjack.Enabled = true;
-			this.label_currentCustomer.Text = this.breakfastLine.Peek().Name;
-
-
 		}
 
 
@@ -118,7 +114,7 @@ namespace CustomerQueueControl
 
 		// Завершение операций с текущим клиентом в очереди.
 		private void button_nextLamberjack_Click(object sender, EventArgs e)
-		{
+		{ // TODO: Нужно разобраться со всем этим - не годится что вся логика в обработчике клика.
 			this.textBox_hasFlatjack.Text = null;
 			if (this.breakfastLine.Count == 0) return;
 
@@ -126,11 +122,16 @@ namespace CustomerQueueControl
 			{
 				this.breakfastLine.Peek().TakeFlapjacks(currentOrder.Key, currentOrder.Value);
 			}
-
-			OrderLoger.Save(
-				this.flapjackOrder.ToDictionary(element => element.Key.DisplayName, element => element.Value),
-				this.breakfastLine.Peek().Name
-			);
+			try
+			{
+				OrderLoger.Save(
+					this.flapjackOrder.ToDictionary(element => element.Key.DisplayName, element => element.Value),
+					this.breakfastLine.Peek().Name
+				);
+			} catch	(Exception error)
+			{
+				MessageBox.Show($"Что то не получилось: {error.Message}");
+			}
 			this.flapjackOrder.Clear();
 			this.breakfastLine.Dequeue().EatFlapjacks(this.textBox_hasFlatjack);
 			this.listBox_customerLine.Items.RemoveAt(0);
@@ -146,7 +147,7 @@ namespace CustomerQueueControl
 			}
 			else // если очередь не опустела отображает следующего получателя.
 			{
-				this.label_currentCustomer.Text = this.breakfastLine.Peek().Name;
+				this.textBox_currentCustomerName.Text = this.breakfastLine.Peek().Name;
 			}
 		}
 
@@ -165,7 +166,9 @@ namespace CustomerQueueControl
 		private void listBox_menu_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			this.groupBox_buttonSetCount.Enabled = true;
-			//this.textBox_descriptionMenuItem.Text = FlapJackMenu.Items[this.listBox_menu.SelectedIndex].Description;
+			this.textBox_descriptionMenuItem.Text = this.mainMealMenu
+				.GetItem(this.listBox_menu.SelectedIndex)
+				.Description;
 		}
 
 

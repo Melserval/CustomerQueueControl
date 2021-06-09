@@ -36,5 +36,15 @@ namespace CustomerQueueControl
 				this.displaylistMenu.Items.RemoveAt(i);
 			}
 		}
+
+		public Dish GetItem(int index)
+		{
+			return this.itemsMenu[index];
+		}
+
+		public Dish GetItem(string name)
+		{
+			return this.itemsMenu.Find(item => name.Equals(item.DisplayName, StringComparison.OrdinalIgnoreCase));
+		}
 	}
 }
