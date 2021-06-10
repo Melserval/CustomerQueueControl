@@ -37,14 +37,14 @@ namespace CustomerQueueControl
 			this.button_nextLamberjack = new System.Windows.Forms.Button();
 			this.textBox_hasFlatjack = new System.Windows.Forms.TextBox();
 			this.groupBox_buttonSetCount = new System.Windows.Forms.GroupBox();
+			this.button_removeFoodCount = new System.Windows.Forms.Button();
+			this.button_addFoodCount = new System.Windows.Forms.Button();
 			this.button_foodNum5 = new System.Windows.Forms.Button();
 			this.button_foodNum4 = new System.Windows.Forms.Button();
 			this.button_foodNum3 = new System.Windows.Forms.Button();
 			this.button_foodNum2 = new System.Windows.Forms.Button();
 			this.button_foodNum1 = new System.Windows.Forms.Button();
 			this.listBox_orderState = new System.Windows.Forms.ListBox();
-			this.button_addFoodCount = new System.Windows.Forms.Button();
-			this.button_removeFoodCount = new System.Windows.Forms.Button();
 			this.label_menu = new System.Windows.Forms.Label();
 			this.label_quantity = new System.Windows.Forms.Label();
 			this.listBox_menu = new System.Windows.Forms.ListBox();
@@ -160,6 +160,28 @@ namespace CustomerQueueControl
 			this.groupBox_buttonSetCount.TabIndex = 16;
 			this.groupBox_buttonSetCount.TabStop = false;
 			// 
+			// button_removeFoodCount
+			// 
+			this.button_removeFoodCount.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.button_removeFoodCount.Location = new System.Drawing.Point(6, 237);
+			this.button_removeFoodCount.Name = "button_removeFoodCount";
+			this.button_removeFoodCount.Size = new System.Drawing.Size(31, 27);
+			this.button_removeFoodCount.TabIndex = 0;
+			this.button_removeFoodCount.Text = "-";
+			this.button_removeFoodCount.UseVisualStyleBackColor = true;
+			this.button_removeFoodCount.Click += new System.EventHandler(this.button_removeFoodCount_Click);
+			// 
+			// button_addFoodCount
+			// 
+			this.button_addFoodCount.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.button_addFoodCount.Location = new System.Drawing.Point(6, 205);
+			this.button_addFoodCount.Name = "button_addFoodCount";
+			this.button_addFoodCount.Size = new System.Drawing.Size(31, 27);
+			this.button_addFoodCount.TabIndex = 1;
+			this.button_addFoodCount.Text = "+";
+			this.button_addFoodCount.UseVisualStyleBackColor = true;
+			this.button_addFoodCount.Click += new System.EventHandler(this.button_addFoodCount_Click);
+			// 
 			// button_foodNum5
 			// 
 			this.button_foodNum5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -229,28 +251,6 @@ namespace CustomerQueueControl
 			this.listBox_orderState.Size = new System.Drawing.Size(165, 199);
 			this.listBox_orderState.TabIndex = 17;
 			// 
-			// button_addFoodCount
-			// 
-			this.button_addFoodCount.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.button_addFoodCount.Location = new System.Drawing.Point(6, 205);
-			this.button_addFoodCount.Name = "button_addFoodCount";
-			this.button_addFoodCount.Size = new System.Drawing.Size(31, 27);
-			this.button_addFoodCount.TabIndex = 1;
-			this.button_addFoodCount.Text = "+";
-			this.button_addFoodCount.UseVisualStyleBackColor = true;
-			this.button_addFoodCount.Click += new System.EventHandler(this.button_addFoodCount_Click);
-			// 
-			// button_removeFoodCount
-			// 
-			this.button_removeFoodCount.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.button_removeFoodCount.Location = new System.Drawing.Point(6, 237);
-			this.button_removeFoodCount.Name = "button_removeFoodCount";
-			this.button_removeFoodCount.Size = new System.Drawing.Size(31, 27);
-			this.button_removeFoodCount.TabIndex = 0;
-			this.button_removeFoodCount.Text = "-";
-			this.button_removeFoodCount.UseVisualStyleBackColor = true;
-			this.button_removeFoodCount.Click += new System.EventHandler(this.button_removeFoodCount_Click);
-			// 
 			// label_menu
 			// 
 			this.label_menu.AutoSize = true;
@@ -302,7 +302,7 @@ namespace CustomerQueueControl
 			// 
 			// button_loadMenu
 			// 
-			this.button_loadMenu.Location = new System.Drawing.Point(12, 523);
+			this.button_loadMenu.Location = new System.Drawing.Point(118, 523);
 			this.button_loadMenu.Name = "button_loadMenu";
 			this.button_loadMenu.Size = new System.Drawing.Size(75, 23);
 			this.button_loadMenu.TabIndex = 29;
@@ -312,7 +312,7 @@ namespace CustomerQueueControl
 			// 
 			// button_loadCustomer
 			// 
-			this.button_loadCustomer.Location = new System.Drawing.Point(118, 523);
+			this.button_loadCustomer.Location = new System.Drawing.Point(12, 523);
 			this.button_loadCustomer.Name = "button_loadCustomer";
 			this.button_loadCustomer.Size = new System.Drawing.Size(75, 23);
 			this.button_loadCustomer.TabIndex = 30;

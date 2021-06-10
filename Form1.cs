@@ -172,8 +172,6 @@ namespace CustomerQueueControl
 		}
 
 
-
-
 		// Диалог для выбора файла списка блюд меню.
 		private void button_loadMenu_Click(object sender, EventArgs e)
 		{
