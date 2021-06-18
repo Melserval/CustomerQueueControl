@@ -143,7 +143,7 @@ namespace CustomerQueueControl
 				this.listBox_menu.Enabled = false;
 				this.groupBox_buttonSetCount.Enabled = false;
 				this.button_nextLamberjack.Enabled = false;
-				this.label_currentCustomer.Text = null;
+				this.textBox_currentCustomerName.Clear();
 			}
 			else // если очередь не опустела отображает следующего получателя.
 			{
@@ -165,6 +165,9 @@ namespace CustomerQueueControl
 
 		private void listBox_menu_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			// если был просто клик на контейнере, без выбора пункта меню.
+			if (this.listBox_menu.SelectedIndex < 0) return;
+
 			this.groupBox_buttonSetCount.Enabled = true;
 			this.textBox_descriptionMenuItem.Text = this.mainMealMenu
 				.GetItem(this.listBox_menu.SelectedIndex)
