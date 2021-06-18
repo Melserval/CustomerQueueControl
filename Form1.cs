@@ -11,6 +11,8 @@ namespace CustomerQueueControl
 		// имена файлов сериализации.
 		static string dataMenu = "menu.dat";
 		static string dataLamb = "lamb.line.dat";
+		static string dataOrders = "";
+		static string _ordersDirectory;
 
 		// список блюд - основное меню.
 		private MealMenu mainMealMenu;
@@ -21,7 +23,29 @@ namespace CustomerQueueControl
 		// количество экземпляров пайка.
 		private Dictionary<Dish, int> flapjackOrder;
 
-		// делегаты для операций с очередью клиентов в breakfastLine.
+		public string OrdersDirectory 
+		{
+			get {
+				if (String.IsNullOrEmpty(_ordersDirectory) || 
+					!Directory.Exists(_ordersDirectory))
+				{
+					if (MessageBox.Show("Необходимо указать папку для сохранения заказов,\nиначе информация о заказе будет утеряна.", 
+						"Внимание", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+					{
+						return null;
+					}
+					if (this.folderBrowserDialog_ordersDirectory.ShowDialog() == DialogResult.OK)
+					{
+						return (_ordersDirectory = this.folderBrowserDialog_ordersDirectory.SelectedPath);
+					}
+					else
+					{
+						return null;
+					}
+				}
+				return _ordersDirectory;
+			}
+		}
 
 
 		public Form1()
@@ -122,16 +146,8 @@ namespace CustomerQueueControl
 			{
 				this.breakfastLine.Peek().TakeFlapjacks(currentOrder.Key, currentOrder.Value);
 			}
-			try
-			{
-				OrderLoger.Save(
-					this.flapjackOrder.ToDictionary(element => element.Key.DisplayName, element => element.Value),
-					this.breakfastLine.Peek().Name
-				);
-			} catch	(Exception error)
-			{
-				MessageBox.Show($"Что то не получилось: {error.Message}");
-			}
+
+			OrderLoger.Save(this.OrdersDirectory, this.breakfastLine.Peek().Name, this.flapjackOrder);
 			this.flapjackOrder.Clear();
 			this.breakfastLine.Dequeue().EatFlapjacks(this.textBox_hasFlatjack);
 			this.listBox_customerLine.Items.RemoveAt(0);
