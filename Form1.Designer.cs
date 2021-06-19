@@ -67,6 +67,7 @@ namespace CustomerQueueControl
 			this.label_dishName = new System.Windows.Forms.Label();
 			this.label_order = new System.Windows.Forms.Label();
 			this.textBox_currentCustomerName = new System.Windows.Forms.TextBox();
+			this.folderBrowserDialog_ordersDirectory = new System.Windows.Forms.FolderBrowserDialog();
 			this.groupBox_buttonSetCount.SuspendLayout();
 			this.groupBox_addCustomer.SuspendLayout();
 			this.groupBox_addDish.SuspendLayout();
@@ -528,6 +529,7 @@ namespace CustomerQueueControl
 		private System.Windows.Forms.Label label_dishName;
 		private System.Windows.Forms.Label label_order;
 		private System.Windows.Forms.TextBox textBox_currentCustomerName;
+		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog_ordersDirectory;
 	}
 }
 
