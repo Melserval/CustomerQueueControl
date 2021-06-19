@@ -165,9 +165,11 @@ namespace CustomerQueueControl
 
 		private void listBox_menu_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			// если был просто клик на контейнере, без выбора пункта меню.
-			if (this.listBox_menu.SelectedIndex < 0) return;
-
+			// если клик был на контейнере, без выбора пункта меню.
+			if (this.listBox_menu.SelectedIndex < 0 || 
+				this.listBox_menu.SelectedItem == null) return;
+			
+			// TODO: Нужно переделать поиск экземпляра меню, что бы искать по имени, а не индексу.
 			this.groupBox_buttonSetCount.Enabled = true;
 			this.textBox_descriptionMenuItem.Text = this.mainMealMenu
 				.GetItem(this.listBox_menu.SelectedIndex)
