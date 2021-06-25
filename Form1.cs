@@ -81,9 +81,11 @@ namespace CustomerQueueControl
 				this.textBox_currentCustomerName.Text = lamb.Name;
 			}
 			// включение контролов зависящих от наличия очереди.
-
-			this.listBox_menu.Enabled = true;
 			this.button_nextLamberjack.Enabled = true;
+			if (this.listBox_menu.SelectedIndex > -1)
+			{
+				this.groupBox_buttonSetCount.Enabled = true;
+			}
 		}
 
 
@@ -100,7 +102,7 @@ namespace CustomerQueueControl
 		private void button_foodNum_addFlapjack_Click(object sender, EventArgs e)
 		{
 			// очередь пустая - некому выдать паек.
-			if (this.breakfastLine.Peek() == null) return;
+			if (this.breakfastLine.Count < 1) return;
 
 			// не выбран пункт меню.
 			if (this.listBox_menu.SelectedIndex < 0) return;
@@ -156,7 +158,6 @@ namespace CustomerQueueControl
 			// выключение контролов и очистка полей зависящих от наличия очереди.
 			if (this.breakfastLine.Count == 0)
 			{
-				this.listBox_menu.Enabled = false;
 				this.groupBox_buttonSetCount.Enabled = false;
 				this.button_nextLamberjack.Enabled = false;
 				this.textBox_currentCustomerName.Clear();
@@ -185,11 +186,13 @@ namespace CustomerQueueControl
 			if (this.listBox_menu.SelectedIndex < 0 || 
 				this.listBox_menu.SelectedItem == null) return;
 			
-			// TODO: Нужно переделать поиск экземпляра меню, что бы искать по имени, а не индексу.
-			this.groupBox_buttonSetCount.Enabled = true;
 			this.textBox_descriptionMenuItem.Text = this.mainMealMenu
 				.GetItem(this.listBox_menu.SelectedIndex)
 				.Description;
+
+			if (this.breakfastLine.Count < 1) return;
+			// TODO: Нужно переделать поиск экземпляра меню, что бы искать по имени, а не индексу.
+			this.groupBox_buttonSetCount.Enabled = true;
 		}
 
 

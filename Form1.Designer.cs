@@ -273,7 +273,6 @@ namespace CustomerQueueControl
 			// 
 			// listBox_menu
 			// 
-			this.listBox_menu.Enabled = false;
 			this.listBox_menu.FormattingEnabled = true;
 			this.listBox_menu.Location = new System.Drawing.Point(428, 42);
 			this.listBox_menu.Name = "listBox_menu";
