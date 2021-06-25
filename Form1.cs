@@ -262,7 +262,10 @@ namespace CustomerQueueControl
 		// Очистка списка меню.
 		private void button_clearMenu_Click(object sender, EventArgs e)
 		{
-			this.mainMealMenu.Clear();
+			if (MessageBox.Show("Очистить список меню?", "Внимание!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+			{
+				this.mainMealMenu.Clear();
+			}
 		}
 	}
 }
