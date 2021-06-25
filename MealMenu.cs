@@ -53,7 +53,6 @@ namespace CustomerQueueControl
 
 		public void SetMenuList(List<Dish> items)
 		{
-			this.itemsMenu = items;
 			this.displaylistMenu.Items.Clear();
 			this.Add(items.ToArray());
 		}
