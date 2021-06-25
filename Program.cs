@@ -14,9 +14,6 @@ namespace CustomerQueueControl
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new Form1());
-			// это мастер ветка и все изменения пишутся сюда.
-			// это значения из сериализабле. 
-
 		}
 	}
 }

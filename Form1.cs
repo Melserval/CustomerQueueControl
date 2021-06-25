@@ -225,7 +225,7 @@ namespace CustomerQueueControl
 		{
 			File.WriteAllText("form.log", "Form is deactivated.");
 
-			using (FileStream menu = File.OpenWrite(dataFileMenu))
+			using (FileStream menu = File.Create(dataFileMenu))
 			{
 				this.formatterMenu.Serialize(menu, this.mainMealMenu.GetMenuList());
 			}
