@@ -1,6 +1,9 @@
-﻿// Комплект еды, трапеза клиента.
+﻿using System;
+
+// Комплект еды, трапеза клиента.
 namespace CustomerQueueControl
 {
+	[Serializable]
 	class Dish
 	{
 		private static int _flapjackCounter;

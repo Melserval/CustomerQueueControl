@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CustomerQueueControl
 {
 	public partial class Form1 : Form
 	{
 		// имена файлов сериализации.
-		static string dataMenu = "menu.dat";
-		static string dataLamb = "lamb.line.dat";
-		static string dataOrders = "";
+		static string dataFileMenu = "menu.dat";
 		static string _ordersDirectory;
+
+		private BinaryFormatter formatterMenu = new BinaryFormatter();
+
 
 		// список блюд - основное меню.
 		private MealMenu mainMealMenu;
@@ -54,6 +56,14 @@ namespace CustomerQueueControl
 			this.flapjackOrder = new Dictionary<Dish, int>();
 			this.breakfastLine = new Queue<Customer>();
 			this.mainMealMenu = new MealMenu(this.listBox_menu);
+			if (File.Exists(dataFileMenu))
+			{
+				using (FileStream menu = File.OpenRead(dataFileMenu))
+				{
+					this.mainMealMenu.SetMenuList(formatterMenu.Deserialize(menu) as List<Dish>);
+				}
+			}
+
 
 			this.openFileDialog_menu.Filter = "JSON |*.json| All Files |*.*";
 			this.openFileDialog_customer.Filter = "JSON |*.json| All Files |*.*";
@@ -82,16 +92,6 @@ namespace CustomerQueueControl
 		// загрузка сериализованных данных.
 		private void loadSerializeData()
 		{
-
-			if (File.Exists(dataMenu))
-			{
-
-			}
-
-			if (File.Exists(dataLamb))
-			{
-
-			}
 
 		}
 
@@ -221,6 +221,11 @@ namespace CustomerQueueControl
 		private void Form1_Deactivate(object sender, EventArgs e)
 		{
 			File.WriteAllText("form.log", "Form is deactivated.");
+
+			using (FileStream menu = File.OpenWrite(dataFileMenu))
+			{
+				this.formatterMenu.Serialize(menu, this.mainMealMenu.GetMenuList());
+			}
 		}
 
 		// Добавление (создание) нового блюда из формы.
@@ -249,6 +254,12 @@ namespace CustomerQueueControl
 			this.textBox_dishName.Clear();
 			this.textBox_dishPrice.Clear();
 			this.textBox_dishDesc.Clear();
+		}
+
+		// Очистка списка меню.
+		private void button_clearMenu_Click(object sender, EventArgs e)
+		{
+			this.mainMealMenu.Clear();
 		}
 	}
 }
