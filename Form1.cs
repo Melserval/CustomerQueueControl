@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CustomerQueueControl
 {
 	public partial class Form1 : Form
 	{
 		// имена файлов сериализации.
-		static string dataMenu = "menu.dat";
-		static string dataLamb = "lamb.line.dat";
-		static string dataOrders = "";
+		static string dataFileMenu = "menu.dat";
 		static string _ordersDirectory;
+
+		private BinaryFormatter formatterMenu = new BinaryFormatter();
+
 
 		// список блюд - основное меню.
 		private MealMenu mainMealMenu;
@@ -54,6 +56,14 @@ namespace CustomerQueueControl
 			this.flapjackOrder = new Dictionary<Dish, int>();
 			this.breakfastLine = new Queue<Customer>();
 			this.mainMealMenu = new MealMenu(this.listBox_menu);
+			if (File.Exists(dataFileMenu))
+			{
+				using (FileStream menu = File.OpenRead(dataFileMenu))
+				{
+					this.mainMealMenu.SetMenuList(formatterMenu.Deserialize(menu) as List<Dish>);
+				}
+			}
+
 
 			this.openFileDialog_menu.Filter = "JSON |*.json| All Files |*.*";
 			this.openFileDialog_customer.Filter = "JSON |*.json| All Files |*.*";
@@ -71,9 +81,11 @@ namespace CustomerQueueControl
 				this.textBox_currentCustomerName.Text = lamb.Name;
 			}
 			// включение контролов зависящих от наличия очереди.
-
-			this.listBox_menu.Enabled = true;
 			this.button_nextLamberjack.Enabled = true;
+			if (this.listBox_menu.SelectedIndex > -1)
+			{
+				this.groupBox_buttonSetCount.Enabled = true;
+			}
 		}
 
 
@@ -83,16 +95,6 @@ namespace CustomerQueueControl
 		private void loadSerializeData()
 		{
 
-			if (File.Exists(dataMenu))
-			{
-
-			}
-
-			if (File.Exists(dataLamb))
-			{
-
-			}
-
 		}
 
 
@@ -100,7 +102,7 @@ namespace CustomerQueueControl
 		private void button_foodNum_addFlapjack_Click(object sender, EventArgs e)
 		{
 			// очередь пустая - некому выдать паек.
-			if (this.breakfastLine.Peek() == null) return;
+			if (this.breakfastLine.Count < 1) return;
 
 			// не выбран пункт меню.
 			if (this.listBox_menu.SelectedIndex < 0) return;
@@ -156,7 +158,6 @@ namespace CustomerQueueControl
 			// выключение контролов и очистка полей зависящих от наличия очереди.
 			if (this.breakfastLine.Count == 0)
 			{
-				this.listBox_menu.Enabled = false;
 				this.groupBox_buttonSetCount.Enabled = false;
 				this.button_nextLamberjack.Enabled = false;
 				this.textBox_currentCustomerName.Clear();
@@ -185,11 +186,13 @@ namespace CustomerQueueControl
 			if (this.listBox_menu.SelectedIndex < 0 || 
 				this.listBox_menu.SelectedItem == null) return;
 			
-			// TODO: Нужно переделать поиск экземпляра меню, что бы искать по имени, а не индексу.
-			this.groupBox_buttonSetCount.Enabled = true;
 			this.textBox_descriptionMenuItem.Text = this.mainMealMenu
 				.GetItem(this.listBox_menu.SelectedIndex)
 				.Description;
+
+			if (this.breakfastLine.Count < 1) return;
+			// TODO: Нужно переделать поиск экземпляра меню, что бы искать по имени, а не индексу.
+			this.groupBox_buttonSetCount.Enabled = true;
 		}
 
 
@@ -221,6 +224,11 @@ namespace CustomerQueueControl
 		private void Form1_Deactivate(object sender, EventArgs e)
 		{
 			File.WriteAllText("form.log", "Form is deactivated.");
+
+			using (FileStream menu = File.OpenWrite(dataFileMenu))
+			{
+				this.formatterMenu.Serialize(menu, this.mainMealMenu.GetMenuList());
+			}
 		}
 
 		// Добавление (создание) нового блюда из формы.
@@ -249,6 +257,12 @@ namespace CustomerQueueControl
 			this.textBox_dishName.Clear();
 			this.textBox_dishPrice.Clear();
 			this.textBox_dishDesc.Clear();
+		}
+
+		// Очистка списка меню.
+		private void button_clearMenu_Click(object sender, EventArgs e)
+		{
+			this.mainMealMenu.Clear();
 		}
 	}
 }

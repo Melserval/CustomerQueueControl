@@ -68,6 +68,7 @@ namespace CustomerQueueControl
 			this.label_order = new System.Windows.Forms.Label();
 			this.textBox_currentCustomerName = new System.Windows.Forms.TextBox();
 			this.folderBrowserDialog_ordersDirectory = new System.Windows.Forms.FolderBrowserDialog();
+			this.button_clearMenu = new System.Windows.Forms.Button();
 			this.groupBox_buttonSetCount.SuspendLayout();
 			this.groupBox_addCustomer.SuspendLayout();
 			this.groupBox_addDish.SuspendLayout();
@@ -272,11 +273,10 @@ namespace CustomerQueueControl
 			// 
 			// listBox_menu
 			// 
-			this.listBox_menu.Enabled = false;
 			this.listBox_menu.FormattingEnabled = true;
 			this.listBox_menu.Location = new System.Drawing.Point(428, 42);
 			this.listBox_menu.Name = "listBox_menu";
-			this.listBox_menu.Size = new System.Drawing.Size(165, 264);
+			this.listBox_menu.Size = new System.Drawing.Size(165, 238);
 			this.listBox_menu.TabIndex = 23;
 			this.listBox_menu.SelectedIndexChanged += new System.EventHandler(this.listBox_menu_SelectedIndexChanged);
 			// 
@@ -303,7 +303,7 @@ namespace CustomerQueueControl
 			// 
 			// button_loadMenu
 			// 
-			this.button_loadMenu.Location = new System.Drawing.Point(118, 523);
+			this.button_loadMenu.Location = new System.Drawing.Point(428, 283);
 			this.button_loadMenu.Name = "button_loadMenu";
 			this.button_loadMenu.Size = new System.Drawing.Size(75, 23);
 			this.button_loadMenu.TabIndex = 29;
@@ -452,11 +452,22 @@ namespace CustomerQueueControl
 			this.textBox_currentCustomerName.TabIndex = 34;
 			this.textBox_currentCustomerName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
+			// button_clearMenu
+			// 
+			this.button_clearMenu.Location = new System.Drawing.Point(509, 283);
+			this.button_clearMenu.Name = "button_clearMenu";
+			this.button_clearMenu.Size = new System.Drawing.Size(84, 23);
+			this.button_clearMenu.TabIndex = 35;
+			this.button_clearMenu.Text = "Clear Menu";
+			this.button_clearMenu.UseVisualStyleBackColor = true;
+			this.button_clearMenu.Click += new System.EventHandler(this.button_clearMenu_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(606, 664);
+			this.Controls.Add(this.button_clearMenu);
 			this.Controls.Add(this.textBox_currentCustomerName);
 			this.Controls.Add(this.label_order);
 			this.Controls.Add(this.groupBox_addDish);
@@ -530,6 +541,7 @@ namespace CustomerQueueControl
 		private System.Windows.Forms.Label label_order;
 		private System.Windows.Forms.TextBox textBox_currentCustomerName;
 		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog_ordersDirectory;
+		private System.Windows.Forms.Button button_clearMenu;
 	}
 }
 

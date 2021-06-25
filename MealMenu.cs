@@ -6,7 +6,6 @@ namespace CustomerQueueControl
 {
 	// Перечень блюд в меню.
 	// настройка содержимого и управление отображением.
-	[Serializable]
 	class MealMenu
 	{
 		private List<Dish> itemsMenu = new List<Dish>();
@@ -45,6 +44,24 @@ namespace CustomerQueueControl
 		public Dish GetItem(string name)
 		{
 			return this.itemsMenu.Find(item => name.Equals(item.DisplayName, StringComparison.OrdinalIgnoreCase));
+		}
+
+		public List<Dish> GetMenuList()
+		{
+			return this.itemsMenu;
+		}
+
+		public void SetMenuList(List<Dish> items)
+		{
+			this.itemsMenu = items;
+			this.displaylistMenu.Items.Clear();
+			this.Add(items.ToArray());
+		}
+
+		public void Clear()
+		{
+			this.itemsMenu.Clear();
+			this.displaylistMenu.Items.Clear();
 		}
 	}
 }
